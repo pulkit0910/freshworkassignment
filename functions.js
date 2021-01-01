@@ -47,6 +47,7 @@ const createfile = (key, value)=>{
     const data = alldata()
     const duplicatefile = data.find((note)=> (note.key === key))
 
+    // checking value cap, key cap and dictionary size
     if(!duplicatefile && value.length<=(16) && key.length <=(32) && dictionary.length <= (1024*1024*1024)){
         data.push({
             key : key,
