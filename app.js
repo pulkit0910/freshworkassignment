@@ -5,22 +5,7 @@ const yargs = require('yargs')
 
 const notes = require('./functions.js')
 
-// const msg1 = msg('pulkit')
 
-// console.log(msg1)
-
-// console.log(chalk.green.bold('Suceess!'))
-// console.log(chalk.inverse('Suceess!'))
-// console.log(chalk.bold('Suceess!'))
-
-// console.log(validator.isURL('www.google.com'))
-//  const command = process.argv[2]
-
-//  if(command === 'add'){
-//      console.log('adding note!')
-//  }else if(command === 'remove'){
-//     console.log('removing note !')
-//  }
 
 //creating add commanand
 
@@ -51,7 +36,7 @@ yargs.command({
 // creating remove command
 
 yargs.command({
-    command : 'delete',
+    command : 'deletefile',
     describe : 'Removing a note!',
     builder : {
         key:{
@@ -69,7 +54,7 @@ yargs.command({
 //creating list command
 
 yargs.command({
-    command:'list',
+    command:'listallfile',
     describe:'listing all the notes',
     handler(){
         notes.listallfile()
@@ -80,10 +65,10 @@ yargs.command({
 //creating read command
 
 yargs.command({
-    command:'read',
-    describe:'reading a note',
+    command:'readfile',
+    describe:'reading a file',
     builder : {
-        title : {
+        key : {
             describe : 'note title',
             demandOption : true,
             type : 'string'
@@ -91,7 +76,7 @@ yargs.command({
     },
     handler(argv){
         //console.log('reading a note')
-        notes.readnote(argv.title)
+        notes.readfile(argv.key)
     }
 })
 yargs.parse()
